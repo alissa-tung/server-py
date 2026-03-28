@@ -13,7 +13,6 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
-        formatter = pkgs.alejandra;
         devShells.default = import ./pkgs/shell.nix {inherit pkgs;};
       }
     );

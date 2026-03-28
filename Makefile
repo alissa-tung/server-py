@@ -5,14 +5,14 @@
 all: fmt lint check test
 
 fmt:
-	(alejandra flake.nix pkgs/shell.nix)
+	(alejandra -q .)
 	(uv run ruff format .)
 	(uv run ruff check --fix .)
 	(fd -e md -e toml -X oxfmt)
 	(mbake format Makefile)
 
 lint:
-	(alejandra --check flake.nix pkgs/shell.nix)
+	(alejandra --check .)
 	(uv run ruff check .)
 	(fd -e md -e toml -X oxfmt --check)
 	(mbake format --check Makefile)
